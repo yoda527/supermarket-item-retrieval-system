@@ -41,8 +41,8 @@
         el: '#app',
         data: {
             loginForm: {
-                username: '',
-                password: ''
+                username: '123',
+                password: '123'
             }
         },
         methods: {
@@ -52,7 +52,25 @@
                 }
             },
             login() {
-                this.$message({type: 'success', message: 'login success !'});
+                if (this.loginForm.username === '') {
+                    this.$message.error('please enter username !');
+                    return;
+                }
+                if (this.loginForm.password === '') {
+                    this.$message.error('please enter password !');
+                    return;
+                }
+                axios.post('/login', this.loginForm)
+                    .then((res) => {
+                        if (res.data === 200) {
+                            this.$message({type: 'success', message: 'login success !'});
+                            return;
+                        }
+                        this.$message.error(res.data['msg']);
+                    })
+                    .catch(() => {
+                        this.$message.error("unknown error !");
+                    });
             },
             welcome() {
                 this.$message({message: '^_^ welcome ! my friend.', type: 'success'});

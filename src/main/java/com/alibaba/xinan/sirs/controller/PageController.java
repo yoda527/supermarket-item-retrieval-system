@@ -1,7 +1,7 @@
 package com.alibaba.xinan.sirs.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author XinAnzzZ
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
 
-    @RequestMapping(value = {"/", "/login"})
+    @GetMapping(value = {"/", "/login"})
     public String login() {
         return "login";
     }
