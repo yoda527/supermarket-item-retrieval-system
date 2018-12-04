@@ -18,6 +18,6 @@ public class CommonController {
     @PostMapping("/login")
     public ResponseVO login(@RequestBody User user) {
         log.info(user.toString());
-        return ResponseVO.fail("fail");
+        return ResponseVO.fail("fail111");
     }
 }
